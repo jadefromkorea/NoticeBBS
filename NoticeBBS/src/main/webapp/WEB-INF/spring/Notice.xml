@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+
+	<resultMap id="noticeVO" type="com.jade.app.vo.NoticeVO">
+		<result property="no" column="no"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="regDtm" column="reg_dtm"/>
+		<result property="modDtm" column="mod_dtm"/>
+		<result property="writer" column="writer"/>
+	</resultMap>
+
+	<select id="selectNoticeByNo" parameterType="string"  resultMap="noticeVO">
+	 	select * from notice where no = #{no}
+	</select>
+	
+	<select id="selectNoticeList" parameterType="com.jade.app.vo.NoticeVO" resultMap="noticeVO">
+		select * from notice order by no
+		LIMIT #{contentCntPerPage} OFFSET #{curPageNo} 
+	</select>
+	
+	<select id="selectNoticeListTotCnt" resultType="String">
+		SELECT COUNT(*) FROM notice
+	</select>
+	
+	<insert id="insertNotice" parameterType="com.jade.app.vo.NoticeVO">
+		insert into notice values((select nvl(max(no)+1,1) from notice), #{title}, #{content}, to_char(CURRENT_DATE, 'YYYY-MM-DD'), to_char(CURRENT_DATE, 'YYYY-MM-DD'), #{writer})
+	</insert>
+
+	<update id="updateNotice" parameterType="com.jade.app.vo.NoticeVO">
+		update notice set
+			title = #{title},
+			content = #{content},
+			mod_dtm = to_char(CURRENT_DATE, 'YYYY-MM-DD'),
+			writer = #{writer}
+		where no = #{no}
+	</update>
+
+	<delete id="deleteNotice" parameterType="com.jade.app.vo.NoticeVO">
+		delete from notice where
+		no = #{no}
+	</delete>
+</mapper>
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
