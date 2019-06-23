@@ -1,7 +1,6 @@
 
 # 프로젝트 빌드, 실행 방법
-https://github.com/jadefromkorea/NoticeBBS.git -> Cone or download
-1. Download Zip
+1. https://github.com/jadefromkorea/NoticeBBS.git -> Cone or download -> Download Zip
 2. 압축을 푼다. 
 3. STS(Spring Tool Suite)에서 import
 4. Existing Projects into Workspace 
